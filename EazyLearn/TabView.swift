@@ -9,7 +9,7 @@ struct CustomTabView: View {
                     Image(systemName: "house")
                     Text("House")
                 }
-            GuideView()
+            BookmarkView()
                 .tabItem {
                     Image(systemName: "bookmark")
                     Text("bookmark")
