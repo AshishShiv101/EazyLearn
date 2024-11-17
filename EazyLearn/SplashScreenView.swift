@@ -16,7 +16,7 @@ struct SplashScreenView: View {
                     .font(.largeTitle)
                     .foregroundStyle(.black)
                 Image(systemName: "book.pages.fill")
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.yellow)
                     .font(.largeTitle)
                 Text("Learn")
                     .font(.largeTitle)
