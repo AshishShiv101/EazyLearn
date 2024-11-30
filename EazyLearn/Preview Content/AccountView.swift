@@ -53,7 +53,7 @@ struct AccountView: View {
                         }
                         
                         Button(action: {
-                            // Action for Edit Contacts
+
                         }) {
                             HStack {
                                 Image(systemName: "person.2")
@@ -72,7 +72,7 @@ struct AccountView: View {
                         }
                         
                         Button(action: {
-                            // Action for Logout
+                            
                         }) {
                             HStack {
                                 Image(systemName: "arrow.backward.circle")
@@ -93,7 +93,7 @@ struct AccountView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 10)
                     
-                    Spacer() // Additional space at the bottom
+                    Spacer() 
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .background(Color.yellow.opacity(0.05))

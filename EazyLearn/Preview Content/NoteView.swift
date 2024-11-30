@@ -5,6 +5,7 @@ struct NoteView: View {
     @State private var noteText: String = "" // Text for the note
     @State private var selectedImage: UIImage? = nil // Holds the selected image
     @State private var pickerItem: PhotosPickerItem? = nil // PhotosPicker selection item
+    @State private var showPicker: Bool = false // Tracks whether to show the picker
 
     var body: some View {
         VStack(spacing: 20) {
@@ -38,7 +39,8 @@ struct NoteView: View {
                 }
             }
             .padding()
-            // Section for "Attach Image" and "Add Image" button side by side
+            
+            // Section for "Attach Image"
             VStack(alignment: .leading) {
                 HStack {
                     Text("Attach Image")
@@ -47,16 +49,16 @@ struct NoteView: View {
                     
                     // Circular Add Image Button
                     Button(action: {
-                        showImagePicker()
+                        showPicker.toggle() // Trigger image picker
                     }) {
                         Image(systemName: "photo.badge.arrow.down.fill")
                             .font(.system(size: 40))
                             .foregroundColor(.black)
-                            .padding(.leading,160)
-                            
+                            .padding(.leading, 160)
                     }
                 }
                 .padding(.top, -10)
+                
                 // Display the selected image
                 if let image = selectedImage {
                     Image(uiImage: image)
@@ -108,16 +110,17 @@ struct NoteView: View {
                 }
             }
         }
-    }
-    
-    // Function to trigger the PhotosPicker
-    private func showImagePicker() {
-        PhotosPicker(
-            selection: $pickerItem,
-            matching: .images,
-            photoLibrary: .shared()) {
-                Label("Select Image", systemImage: "photo")
+        .sheet(isPresented: $showPicker) {
+            PhotosPicker(
+                selection: $pickerItem,
+                matching: .images,
+                photoLibrary: .shared()
+            ) {
+                Text("Select an Image")
+                    .font(.headline)
+                    .padding()
             }
+        }
     }
 }
 
