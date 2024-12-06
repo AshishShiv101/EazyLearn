@@ -93,7 +93,7 @@ struct AccountView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 10)
                     
-                    Spacer() 
+                    Spacer()
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .background(Color.yellow.opacity(0.05))
