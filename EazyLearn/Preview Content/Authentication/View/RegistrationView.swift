@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RegistrationView: View {
     @State private var email = ""
-    @State private var fullName = ""
+    @State private var fullname = ""
     @State private var password = ""
     @State private var confirmPassword = ""
     @Environment(\.dismiss) var dismiss
@@ -20,7 +20,7 @@ struct RegistrationView: View {
                 InputView(text: $email, title: "Email Address", placeholder: "name@example.com")
                     .autocapitalization(.none)
                 
-                InputView(text: $fullName, title: "Full Name", placeholder: "Enter your name")
+                InputView(text: $fullname, title: "Full Name", placeholder: "Enter your name")
                 
                 InputView(text: $password, title: "Password", placeholder: "Enter your password", isSecureField: true)
                 
@@ -31,13 +31,10 @@ struct RegistrationView: View {
                         print("Passwords do not match")
                         return
                     }
-                    Task {
-                        do {
-                            try await viewModel.signIn(withemail: email, password: password, fullName: fullName)
-                        } catch {
-                            print("Failed to sign up: \(error.localizedDescription)")
-                        }
+                    Task{
+                        try await viewModel.createUser(withemail: email, password: password,fullname: fullname)
                     }
+                    
                 }) {
                     HStack {
                         Text("Sign Up")
@@ -70,4 +67,4 @@ struct RegistrationView: View {
             RegistrationView()
         }
     }
-}
+

@@ -4,7 +4,7 @@ struct InputView: View {
     @Binding var text: String
     let title: String
     let placeholder: String
-    var isSecure: Bool = false
+    var isSecureField = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -13,27 +13,23 @@ struct InputView: View {
                 .fontWeight(.semibold)
                 .foregroundColor(.gray)
             
-       
-            Group {
-                if isSecure {
-                    SecureField(placeholder, text: $text)
-                        .font(.system(size: 14))
-                        .autocapitalization(.none)
-                } else {
-                    TextField(placeholder, text: $text)
-                        .font(.system(size: 14))
-                        .autocapitalization(.none)
-                }
+            if isSecureField {
+                SecureField(placeholder, text: $text)
+                    .font(.system(size: 14))
+                    .padding()
+                    .background(Color(UIColor.systemGray6))
+                    .cornerRadius(8)
+                    .shadow(radius: 5)
+            } else {
+                TextField(placeholder, text: $text)
+                    .font(.system(size: 14))
+                    .padding()
+                    .background(Color(UIColor.systemGray6))
+                    .cornerRadius(8)
+                    .shadow(radius: 5)
             }
-            .padding(.vertical, 10)
-            .padding(.horizontal, 12)
-            .background(Color(.systemGray6))
-            .cornerRadius(8)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-            )
         }
+        .padding(.horizontal) // Adds padding to the entire VStack
     }
 }
 
@@ -48,7 +44,7 @@ struct InputView: View {
             text: .constant(""),
             title: "Password",
             placeholder: "Enter your password",
-            isSecure: true
+            isSecureField: true
         )
     }
     .padding()
