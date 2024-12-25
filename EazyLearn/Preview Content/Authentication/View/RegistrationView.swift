@@ -7,34 +7,44 @@ struct RegistrationView: View {
     @State private var confirmPassword = ""
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: AuthViewModel
-    
+
+    @State private var showError = false
+
     var body: some View {
         VStack {
-            Image("Firebase-logo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100, height: 128)
-                .padding(.vertical, 32)
-            
+
             VStack(spacing: 24) {
                 InputView(text: $email, title: "Email Address", placeholder: "name@example.com")
                     .autocapitalization(.none)
-                
+
                 InputView(text: $fullname, title: "Full Name", placeholder: "Enter your name")
-                
+
                 InputView(text: $password, title: "Password", placeholder: "Enter your password", isSecureField: true)
-                
+
                 InputView(text: $confirmPassword, title: "Confirm Password", placeholder: "Confirm your password", isSecureField: true)
-                
+
+                if showError, let errorMessage = viewModel.errorMessage {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                        .font(.caption)
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 8)
+                }
+
                 Button(action: {
-                    guard password == confirmPassword else {
-                        print("Passwords do not match")
+                    if password != confirmPassword {
+                        viewModel.errorMessage = "Passwords do not match"
+                        showError = true
                         return
                     }
-                    Task{
-                        try await viewModel.createUser(withemail: email, password: password,fullname: fullname)
+                    Task {
+                        try await viewModel.createUser(withEmail: email, password: password, fullname: fullname)
+                        if viewModel.errorMessage == nil {
+                            dismiss()
+                        } else {
+                            showError = true
+                        }
                     }
-                    
                 }) {
                     HStack {
                         Text("Sign Up")
@@ -47,7 +57,7 @@ struct RegistrationView: View {
                     .cornerRadius(8)
                 }
                 .padding(.top, 20)
-                
+
                 Button(action: {
                     dismiss()
                 }) {
@@ -58,13 +68,16 @@ struct RegistrationView: View {
             }
             .padding()
         }
+        .onAppear {
+            showError = false
+            viewModel.errorMessage = nil
+        }
     }
 }
 
-    
-    struct RegistrationView_Previews: PreviewProvider {
-        static var previews: some View {
-            RegistrationView()
-        }
+struct RegistrationView_Previews: PreviewProvider {
+    static var previews: some View {
+        RegistrationView()
+            .environmentObject(AuthViewModel())
     }
-
+}

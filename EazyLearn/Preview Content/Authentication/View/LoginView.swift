@@ -25,13 +25,13 @@ struct LoginView: View {
                 Button{
                     Task{
                         try await
-                        viewModel.signIn(withemail: email, password: password)
+                        viewModel.signIn(withEmail: email, password: password)
                     }
                 } label:{
                     HStack{
                         Text("Sign In")
                             .fontWeight(.semibold)
-                        Image(systemName: "arrow.2.circlepath.circlepath.circle")
+                        
                     }  .foregroundStyle(.white)
                         .frame(width: UIScreen.main.bounds.width - 32, height: 48)
                 }
