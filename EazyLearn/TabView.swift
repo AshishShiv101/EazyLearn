@@ -1,35 +1,22 @@
 import SwiftUI
 
-struct CustomTabView: View {
-       var body: some View {
-        
+struct MainTabView: View {
+    var body: some View {
         TabView {
             HomeView()
                 .tabItem {
-                    Image(systemName: "house")
-                    Text("House")
+                    Label("Home", systemImage: "house.fill")
                 }
-            BookmarkView()
+            
+            Notes()
                 .tabItem {
-                    Image(systemName: "bookmark")
-                    Text("bookmark")
-                }
-            ShareView()
-                .tabItem {
-                    Image(systemName: "text.bubble")
-                    Text("Community")
-                }
-            AccountView()
-                .tabItem {
-                    Image(systemName: "person")
-                    Text("Account")
+                    Label("Notes", systemImage: "books.vertical.fill")
                 }
         }
-        .accentColor(Color("BrandPrimary"))
-
+        .accentColor(.yellow)  // Set selected tab color to yellow
     }
 }
 
 #Preview {
-    CustomTabView()
+    MainTabView()
 }

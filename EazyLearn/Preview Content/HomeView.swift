@@ -5,7 +5,6 @@ struct HomeView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    // Welcome Section
                     Text("Welcome to EazyLearn")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -18,10 +17,8 @@ struct HomeView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
 
-                    // Note Creation Section
                     NoteView()
                     
-                    // Recent Notes Section
                     RecentView()
                 }
                 .padding(.vertical)

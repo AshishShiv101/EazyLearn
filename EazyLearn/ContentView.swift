@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showSplash = true
-    @StateObject private var authViewModel = AuthViewModel()
 
     var body: some View {
         ZStack {
@@ -10,13 +9,7 @@ struct ContentView: View {
                 SplashScreenView()
                     .transition(.opacity)
             } else {
-                if authViewModel.isAuthenticated {
-                    HomeView()
-                        .environmentObject(authViewModel) // Pass AuthViewModel to HomeView
-                } else {
-                    LoginView()
-                        .environmentObject(authViewModel) // Pass AuthViewModel to LoginView
-                }
+                MainTabView() // Replaced HomeView with a TabView
             }
         }
         .onAppear {
