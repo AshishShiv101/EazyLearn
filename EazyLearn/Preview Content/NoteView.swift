@@ -6,14 +6,35 @@ struct NoteView: View {
     @State private var selectedImage: UIImage? = nil // Holds the selected image
     @State private var pickerItem: PhotosPickerItem? = nil // PhotosPicker selection item
     @State private var showPicker: Bool = false // Tracks whether to show the picker
+    @State private var showPromptAlert: Bool = false // Tracks if the prompt alert should be shown
+    @State private var promptText: String = "" // Stores the prompt text
 
     var body: some View {
         VStack(spacing: 20) {
             // Section for the TextEditor
             VStack(alignment: .leading) {
-                Text("Your Notes")
-                    .font(.headline)
-                    .foregroundColor(.primary)
+                HStack {
+                    Text("Your Notes")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                    
+                    Spacer()
+                    
+                    // AI Button at the top-right corner
+                    Menu {
+                        Button("Enter Prompt", action: {
+                            showPromptAlert = true // Show the prompt input sheet
+                        })
+                        
+                        Button("Enhance Text", action: {
+                            enhanceText()
+                        })
+                    } label: {
+                        Image(systemName: "brain.head.profile")
+                            .font(.system(size: 24))
+                            .foregroundColor(.yellow)
+                    }
+                }
                 
                 ZStack(alignment: .topTrailing) {
                     TextEditor(text: $noteText)
@@ -121,6 +142,37 @@ struct NoteView: View {
                     .padding()
             }
         }
+        .sheet(isPresented: $showPromptAlert) {
+            TextAlert(promptText: $promptText) // Show the TextAlert when the button is tapped
+        }
+    }
+
+    // Enhance Text Function Placeholder
+    private func enhanceText() {
+        print("Enhance Text action triggered")
+        // Add your text enhancement logic here
+    }
+}
+
+struct TextAlert: View {
+    @Binding var promptText: String
+
+    var body: some View {
+        VStack {
+            TextField("Enter your prompt here", text: $promptText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            
+            Button("Submit", action: {
+                print("Prompt submitted: \(promptText)")
+            })
+            .padding(.top)
+        }
+        .padding()
+        .frame(width: 300, height: 200)
+        .background(Color.white)
+        .cornerRadius(20)
+        .shadow(radius: 10)
     }
 }
 

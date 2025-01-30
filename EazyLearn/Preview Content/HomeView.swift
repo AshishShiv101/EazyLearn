@@ -23,7 +23,6 @@ struct HomeView: View {
                 }
                 .padding(.vertical)
             }
-            .background(Color(.systemGroupedBackground))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

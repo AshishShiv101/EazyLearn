@@ -38,3 +38,4 @@ struct NotesDetailView: View {
         return formatter.string(from: date)
     }
 }
+
