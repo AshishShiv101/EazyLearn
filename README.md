@@ -20,8 +20,6 @@ EazyLearn is a simple and intuitive notes app built using SwiftUI.  It allows yo
 
 </div>
 
-*Note: The screenshots above showcase the app's key features and design.*  *(Replace with actual descriptions if the screenshots show something different)*
-
 
 ## Technologies Used
 
