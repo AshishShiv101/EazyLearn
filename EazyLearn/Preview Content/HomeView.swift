@@ -17,8 +17,24 @@ struct HomeView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
 
-                    NoteView()
+                    // NoteView wrapped in a fixed-height container
+                    VStack {
+                        NoteView()
+                    }
+                    .frame(height: 400) // Set a fixed height for the container
                     
+                    // Heading for TagView
+                    Text("Quick Access")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.primary)
+                        .padding(.top, 10)
+
+                    // Add TagView here
+                    TagView()
+                        .padding(.vertical)
+
+                    // RecentView
                     RecentView()
                 }
                 .padding(.vertical)

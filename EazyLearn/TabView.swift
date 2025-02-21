@@ -10,7 +10,7 @@ struct MainTabView: View {
             
             Notes()
                 .tabItem {
-                    Label("Notes", systemImage: "books.vertical.fill")
+                    Label("Library", systemImage: "books.vertical.fill")
                 }
         }
         .accentColor(.yellow)  // Set selected tab color to yellow
