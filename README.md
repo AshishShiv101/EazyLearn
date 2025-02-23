@@ -14,10 +14,9 @@ EazyLearn is a simple and intuitive notes app built using SwiftUI.  It allows yo
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/a154ef4f-a0e4-4a14-afe0-2cb8368d780a" alt="Create Note Screen" width="250">
-    <img src="https://github.com/user-attachments/assets/4281d98c-a4de-47f5-b34b-973f33fa4e32" alt="Note Details Screen" width="250">
+  <img src="https://github.com/user-attachments/assets/234ba179-1e4f-42f6-b24d-a16fe3621488" alt="Note List Screen" width="250">
   <img src="https://github.com/user-attachments/assets/8fb186b6-71f3-47d2-9f9a-9d8265f0350f" alt="Tagging Screen" width="250">
-    <img src="https://github.com/user-attachments/assets/554f5f11-9308-42cd-bd75-a54c5c75a67a" alt="Note List Screen" width="250">
-
+  <img src="https://github.com/user-attachments/assets/554f5f11-9308-42cd-bd75-a54c5c75a67a" alt="Note List Screen" width="250">
 </div>
 
 
