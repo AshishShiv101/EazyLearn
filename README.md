@@ -27,6 +27,6 @@ EazyLearn is a simple and intuitive notes app built using SwiftUI.  It allows yo
 ## Getting Started
 
 1. Clone the repository: `git clone https://github.com/AshishShiv101/EazyLearn.git`
-2. Open the project in Xcode.
+2. Open the project in PlayGround.
 3. Build and run the app on a simulator or physical device.
 
